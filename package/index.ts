@@ -23,3 +23,10 @@ export { default as modulo } from './math/modulo';
 export { default as sum } from './math/sum';
 
 // collect
+export { default as countBy } from './collect/countBy';
+export { default as each } from './collect/each';
+export { default as every } from './collect/every';
+export { default as filter } from './collect/filter';
+export { default as map } from './collect/map';
+export { default as reduce } from './collect/reduce';
+export { default as sort } from './collect/sort';
