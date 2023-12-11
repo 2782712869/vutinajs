@@ -1,10 +1,10 @@
 type Filter = <T extends string[] | number[]>(
-  predicate: (value: T[number], index: number) => boolean,
+  predicate: (item: T[number], index: number) => boolean,
   list: T,
-) => T;
+) => T[number][];
 
 const filter: Filter = (predicate, list) => {
-  return list.filter(predicate);
+  return list.filter((item, index) => predicate(item, index));
 };
 
 export default filter;

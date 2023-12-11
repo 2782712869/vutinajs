@@ -1,4 +1,11 @@
-type Each = <T extends string[] | number[]>(
+type Each = <
+  T extends
+    | string[]
+    | number[]
+    | {
+        [key: string]: string | number;
+      }[],
+>(
   iteratee: (value: (typeof list)[number], index: number) => void,
   list: T,
 ) => void;
