@@ -30,3 +30,11 @@ export { default as filter } from './collect/filter';
 export { default as map } from './collect/map';
 export { default as reduce } from './collect/reduce';
 export { default as sort } from './collect/sort';
+
+// array
+export { default as chunk } from './array/chunk';
+export { default as concat } from './array/concat';
+export { default as isArray } from './array/isArray';
+export { default as join } from './array/join';
+export { default as take } from './array/take';
+export { default as union } from './array/union';

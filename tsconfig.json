@@ -3,7 +3,10 @@
     "strict": true,
     "target": "ESNext",
     "lib": ["ESNext"],
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./package/*"]
+    }
   },
   "include": ["package/index.ts"],
   "exclude": ["node_modules"]
