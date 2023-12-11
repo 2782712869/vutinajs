@@ -38,3 +38,13 @@ export { default as isArray } from './array/isArray';
 export { default as join } from './array/join';
 export { default as take } from './array/take';
 export { default as union } from './array/union';
+
+// object
+export { default as isNull } from './object/isNull';
+export { default as isUndefined } from './object/isUndefined';
+export { default as isObject } from './object/isObject';
+export { default as isEmpty } from './object/isEmpty';
+export { default as isEqual } from './object/isEqual';
+export { default as keys } from './object/keys';
+export { default as values } from './object/values';
+export { default as has } from './object/has';
