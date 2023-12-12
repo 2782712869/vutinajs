@@ -38,6 +38,7 @@ export { default as isArray } from './array/isArray';
 export { default as join } from './array/join';
 export { default as take } from './array/take';
 export { default as union } from './array/union';
+export { default as includes } from './array/includes';
 
 // object
 export { default as isNull } from './object/isNull';
@@ -48,3 +49,5 @@ export { default as isEqual } from './object/isEqual';
 export { default as keys } from './object/keys';
 export { default as values } from './object/values';
 export { default as has } from './object/has';
+export { default as pick } from './object/pick';
+export { default as omit } from './object/omit';

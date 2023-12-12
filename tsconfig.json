@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": "./package",
     "strict": true,
     "target": "ESNext",
     "lib": ["ESNext"],
     "outDir": "./dist",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
     "paths": {
       "@/*": ["./package/*"]
     }
   },
   "include": ["package/index.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
