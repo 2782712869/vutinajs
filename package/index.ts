@@ -59,3 +59,17 @@ export { default as once } from './fn/once';
 export { default as deepClone } from './fn/deepClone';
 export { default as debounce } from './fn/debounce';
 export { default as throttle } from './fn/throttle';
+
+// fp
+export { default as identity } from './fp/identity';
+export { default as memoize } from './fp/memoize';
+export { default as pipe } from './fp/pipe';
+export { default as compose } from './fp/compose';
+export { default as curry } from './fp/curry';
+export { default as partial } from './fp/partial';
+
+// functor
+export { default as IO } from './functor/IO';
+export { default as Task } from './functor/Task';
+export { default as of } from './functor/AP';
+export { default as Monad } from './functor/Monad';
