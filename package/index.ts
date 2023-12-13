@@ -51,3 +51,11 @@ export { default as values } from './object/values';
 export { default as has } from './object/has';
 export { default as pick } from './object/pick';
 export { default as omit } from './object/omit';
+
+// fn
+export { default as isFunction } from './fn/isFunction';
+export { default as delay } from './fn/delay';
+export { default as once } from './fn/once';
+export { default as deepClone } from './fn/deepClone';
+export { default as debounce } from './fn/debounce';
+export { default as throttle } from './fn/throttle';

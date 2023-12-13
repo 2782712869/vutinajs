@@ -2,10 +2,7 @@ import each from '../collect/each';
 import includes from '../array/includes';
 import keys from './keys';
 
-type _Omit = <T extends Obj, K extends keyof T>(
-  obj: T,
-  props: K[] & string[],
-) => Obj;
+type _Omit = <T extends Obj>(obj: T, props: string[]) => Obj;
 
 type Obj = {
   [key: string]: string | number;

@@ -1,17 +1,9 @@
-type Map = <
-  T extends
-    | string[]
-    | number[]
-    | {
-        [key: string]: string | number;
-      }[],
->(
-  predicate: (item: T[number], index: number) => T[number],
-  list: T,
-) => T[number][];
-
-const map: Map = (predicate, list) => {
-  return list.map((item, index) => predicate(item, index));
+const map = <T, U>(mapper: (item: T, index: number) => U, arr: T[]): U[] => {
+  const result: U[] = [];
+  for (const [index, item] of arr.entries()) {
+    result.push(mapper(item, index));
+  }
+  return result;
 };
 
 export default map;
