@@ -1,10 +1,18 @@
-type Every = <T extends string[] | number[]>(
-  predicate: (value: T[number], index: number) => boolean,
-  list: T,
+type Every = <T>(
+  predicate: (value: T, index: number) => boolean,
+  list: T[],
 ) => boolean;
 
 const every: Every = (predicate, list) => {
-  return list.every(predicate);
+  if (list.length === 0) {
+    return true;
+  }
+  for (let i = 0; i < list.length; i++) {
+    if (!predicate(list[i], i)) {
+      return false;
+    }
+  }
+  return true;
 };
 
 export default every;

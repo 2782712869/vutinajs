@@ -1,4 +1,4 @@
-type IsString = <T>(value: T) => boolean;
+type IsString = (value: unknown) => boolean;
 
 const isString: IsString = (value) => {
   return typeof value === 'string';

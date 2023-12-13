@@ -1,3 +1,5 @@
+import reduce from './reduce';
+
 type CountBy = <T extends string[] | number[]>(
   iteratee: (item: (typeof list)[number]) => string,
   list: T,
@@ -8,15 +10,18 @@ type Counts = {
 };
 
 const countBy: CountBy = (iteratee, list) => {
-  return list.reduce((resut: Counts, value) => {
-    const key = iteratee(value);
-    if (!resut[key]) {
-      resut[key] = 1;
-    } else {
-      ++resut[key];
-    }
-    return resut;
-  }, {});
+  if (list.length === 0) {
+    return {};
+  }
+  return reduce(
+    (result: Counts, value) => {
+      const key = iteratee(value);
+      result[key] = (result[key] || 0) + 1;
+      return result;
+    },
+    Object.create(null),
+    list,
+  );
 };
 
 export default countBy;

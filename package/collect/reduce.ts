@@ -1,14 +1,14 @@
-type Reducer<T, U> = (
-  accumulator: U,
-  currentValue: T,
+type Reducer<A, R> = (
+  accumulator: R,
+  currentValue: A,
   currentIndex: number,
-) => U;
+) => R;
 
-function reduce<T, U>(reducer: Reducer<T, U>, initialValue: U, array: T[]): U {
-  let accumulator: U = initialValue;
+function reduce<A, R>(reducer: Reducer<A, R>, initialValue: R, array: A[]): R {
+  let accumulator: R = initialValue;
 
-  for (let i = 0; i < array.length; i++) {
-    accumulator = reducer(accumulator, array[i], i);
+  for (const [index, value] of array.entries()) {
+    accumulator = reducer(accumulator, value, index);
   }
 
   return accumulator;

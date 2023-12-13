@@ -1,19 +1,15 @@
-import each from './each';
+import map from './map';
 
-type Pluck = (
-  list: {
-    [key: string]: string | number;
-  }[],
-  propertyName: string,
-) => (string | number)[];
+type Pluck = <T extends Record<string, unknown>>(
+  list: T[],
+  propertyName: keyof T,
+) => T[keyof T][] | undefined;
 
 const pluck: Pluck = (list, propertyName) => {
-  const arr: (string | number)[] = [];
-  each((item) => {
-    return item[propertyName];
-  }, list);
-
-  return arr;
+  if (list.length === 0) {
+    return;
+  }
+  return map((item) => item[propertyName], list);
 };
 
 export default pluck;

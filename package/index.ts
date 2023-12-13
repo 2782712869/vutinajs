@@ -14,7 +14,7 @@ export { default as trim } from './string/trim';
 
 // math
 export { default as max } from './math/max';
-export { default as min } from './math/max';
+export { default as min } from './math/min';
 export { default as add } from './math/add';
 export { default as subtract } from './math/subtract';
 export { default as divide } from './math/divide';
@@ -29,7 +29,7 @@ export { default as every } from './collect/every';
 export { default as filter } from './collect/filter';
 export { default as map } from './collect/map';
 export { default as reduce } from './collect/reduce';
-export { default as sort } from './collect/sort';
+export { default as pluck } from './collect/pluck';
 
 // array
 export { default as chunk } from './array/chunk';

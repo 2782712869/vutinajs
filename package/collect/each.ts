@@ -1,19 +1,12 @@
-type Each = <
-  T extends
-    | string[]
-    | number[]
-    | {
-        [key: string]: string | number;
-      }[],
->(
-  iteratee: (value: (typeof list)[number], index: number) => void,
-  list: T,
-) => void;
+type Each = <T>(iteratee: (value: T, index: number) => void, list: T[]) => void;
 
 const each: Each = (iteratee, list) => {
-  list.forEach((value, index) => {
-    iteratee(value, index);
-  });
+  if (list.length === 0) {
+    return;
+  }
+  for (const [index, key] of list.entries()) {
+    iteratee(key, index);
+  }
 };
 
 export default each;

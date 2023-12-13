@@ -1,7 +1,5 @@
 type Divide = (a: number, b: number) => number;
 
-const divide: Divide = (a, b) => {
-  return a / b;
-};
+const divide: Divide = (a, b) => a / b;
 
 export default divide;

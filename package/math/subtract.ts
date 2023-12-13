@@ -1,7 +1,5 @@
 type Subtract = (a: number, b: number) => number;
 
-const subtract: Subtract = (a, b) => {
-  return a - b;
-};
+const subtract: Subtract = (a, b) => a - b;
 
 export default subtract;

@@ -1,7 +1,5 @@
 type Modulo = (a: number, b: number) => number;
 
-const modulo: Modulo = (a, b) => {
-  return a % b;
-};
+const modulo: Modulo = (a, b) => a % b;
 
 export default modulo;

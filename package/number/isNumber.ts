@@ -1,4 +1,4 @@
-type IsNumber = <T>(value: T) => boolean;
+type IsNumber = (value: unknown) => boolean;
 
 const isNumber: IsNumber = (value) => {
   return typeof value === 'number';
