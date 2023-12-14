@@ -1,19 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type Curried<A, R> = A extends []
-  ? () => R
-  : A extends [infer ARG]
-    ? (param: ARG) => R
-    : A extends [infer ARG, ...infer REST]
-      ? (param: ARG) => Curried<REST, R>
-      : never;
 
-const curry = <A extends any[], R>(fn: (...args: A[]) => R): Curried<A, R> => {
-  const curried = (...args: A[]) => {
-    return args.length < fn.length
-      ? (...rest: A[]) => curried(...args, ...rest)
-      : fn(...args);
-  };
-  return curried as Curried<A, R>;
+export type Curry<
+  F extends (...args: any[]) => any,
+  A extends any[] = [],
+> = A['length'] extends Parameters<F>['length']
+  ? () => ReturnType<F>
+  : A extends [...infer P, ...infer R]
+    ? (...arg: P) => Curry<F, R>
+    : never;
+
+const curry = <F extends (...args: any[]) => any>(fn: F): Curry<F> => {
+  const curried = (...args: any[]) =>
+    args.length >= fn.length
+      ? fn(...args)
+      : (((...rest: any[]) => curried(...args, ...rest)) as Curry<F>);
+
+  return curried as Curry<F>;
 };
 
 export default curry;

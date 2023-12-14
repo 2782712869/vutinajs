@@ -1,9 +1,11 @@
+import curry, { Curry } from '../fp/curry';
+
 type Filter = <T, U extends T[]>(
   predicate: (item: T, index: number) => boolean,
   list: U,
 ) => T[];
 
-const filter: Filter = (predicate, list) => {
+const filter: Curry<Filter> = curry((predicate, list) => {
   if (list.length === 0) {
     return [];
   }
@@ -15,6 +17,6 @@ const filter: Filter = (predicate, list) => {
   }
 
   return result;
-};
+});
 
 export default filter;

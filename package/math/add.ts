@@ -1,5 +1,7 @@
+import curry, { Curry } from '../fp/curry';
+
 type Add = (a: number, b: number) => number;
 
-const add: Add = (a, b) => a + b;
+const add: Curry<Add> = curry((a, b) => a + b);
 
 export default add;

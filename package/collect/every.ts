@@ -1,9 +1,11 @@
+import curry, { Curry } from '../fp/curry';
+
 type Every = <T>(
   predicate: (value: T, index: number) => boolean,
   list: T[],
 ) => boolean;
 
-const every: Every = (predicate, list) => {
+const every: Curry<Every> = curry((predicate, list) => {
   if (list.length === 0) {
     return true;
   }
@@ -13,6 +15,6 @@ const every: Every = (predicate, list) => {
     }
   }
   return true;
-};
+});
 
 export default every;

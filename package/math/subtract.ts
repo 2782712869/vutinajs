@@ -1,5 +1,7 @@
+import curry, { Curry } from '../fp/curry';
+
 type Subtract = (a: number, b: number) => number;
 
-const subtract: Subtract = (a, b) => a - b;
+const subtract: Curry<Subtract> = curry((a, b) => a - b);
 
 export default subtract;
