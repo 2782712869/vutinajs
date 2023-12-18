@@ -1,11 +1,14 @@
-import curry, { Curry } from '../fp/curry';
+import isArray from '../array/isArray';
 
 type Every = <T>(
   predicate: (value: T, index: number) => boolean,
   list: T[],
 ) => boolean;
 
-const every: Curry<Every> = curry((predicate, list) => {
+const every: Every = (predicate, list) => {
+  if (!isArray(list)) {
+    throw new Error('list must be an array');
+  }
   if (list.length === 0) {
     return true;
   }
@@ -15,6 +18,6 @@ const every: Curry<Every> = curry((predicate, list) => {
     }
   }
   return true;
-});
+};
 
 export default every;

@@ -1,10 +1,10 @@
 import reduce from './reduce';
 import isNull from '../object/isNull';
 import isUndefined from '../object/isUndefined';
-import curry, { Curry } from '../fp/curry';
+import isArray from '../array/isArray';
+import { FullType } from '../utilis/types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type CountBy = <T extends any[]>(
+type CountBy = <T extends FullType[]>(
   iteratee: (item: T[number]) => string,
   list: T,
 ) => Counts;
@@ -13,13 +13,15 @@ type Counts = {
   [key: string]: number;
 };
 
-const countBy: Curry<CountBy> = curry((iteratee, list) => {
+const countBy: CountBy = (iteratee, list) => {
+  if (!isArray(list)) {
+    throw new Error('list must be an array');
+  }
   if (list.length === 0) {
     return {};
   }
   return reduce(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (result: Counts, value: any) => {
+    (result: Counts, value: (typeof list)[number]) => {
       const key = iteratee(value);
       if (!isNull(key) && !isUndefined(key)) {
         result[key] = (result[key] || 0) + 1;
@@ -29,6 +31,6 @@ const countBy: Curry<CountBy> = curry((iteratee, list) => {
     Object.create(null),
     list,
   );
-});
+};
 
 export default countBy;

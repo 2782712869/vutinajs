@@ -9,7 +9,7 @@ const concat: Concat = (arr, ...arrs) => {
   }
   if (arrs.length === 0) return arr;
   const result = [...arr];
-  each((item: []) => {
+  each((item) => {
     result.push(...item);
   }, arrs);
   return result;

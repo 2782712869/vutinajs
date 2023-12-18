@@ -1,17 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import curry, { Curry } from '../fp/curry';
 import map from './map';
+import isArray from '../array/isArray';
+import { FullType } from 'utilis/types';
 
-type Pluck = <T extends Record<string, any>>(
+type Pluck = <T extends Record<string, FullType>>(
   list: T[],
   propertyName: keyof T,
-) => T[keyof T][] | undefined;
+) => T[keyof T][];
 
-const pluck: Curry<Pluck> = curry((list, propertyName) => {
+const pluck: Pluck = (list, propertyName) => {
+  if (!isArray(list)) {
+    throw new Error('list must be an array');
+  }
   if (list.length === 0) {
-    return;
+    return [];
   }
   return map((item: (typeof list)[number]) => item[propertyName], list);
-});
+};
 
 export default pluck;

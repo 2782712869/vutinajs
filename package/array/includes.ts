@@ -1,6 +1,5 @@
 import isArray from './isArray';
-
-type FullType = string | number | boolean | null | undefined | symbol | object;
+import { FullType } from '../utilis/types';
 
 type Includes = <T extends FullType[]>(arr: T, key: T[number]) => boolean | T;
 

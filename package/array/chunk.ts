@@ -1,7 +1,7 @@
 import isArray from './isArray';
+import { FullType } from '../utilis/types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const chunk = <T extends any[]>(list: T[], size: number): T[][] => {
+const chunk = <T extends FullType[]>(list: T[], size: number): T[][] => {
   if (!isArray(list)) {
     throw new Error('list must be an array');
   }

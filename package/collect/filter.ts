@@ -1,11 +1,14 @@
-import curry, { Curry } from '../fp/curry';
+import isArray from '../array/isArray';
 
 type Filter = <T, U extends T[]>(
   predicate: (item: T, index: number) => boolean,
   list: U,
 ) => T[];
 
-const filter: Curry<Filter> = curry((predicate, list) => {
+const filter: Filter = (predicate, list) => {
+  if (!isArray(list)) {
+    throw new Error('list must be an array');
+  }
   if (list.length === 0) {
     return [];
   }
@@ -17,6 +20,6 @@ const filter: Curry<Filter> = curry((predicate, list) => {
   }
 
   return result;
-});
+};
 
 export default filter;
