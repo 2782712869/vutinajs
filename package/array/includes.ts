@@ -1,8 +1,18 @@
-type Includes = <T extends (string | number)[]>(
-  arr: T,
-  key: T[number],
-) => boolean;
+import isArray from './isArray';
 
-const includes: Includes = (arr, key) => arr.includes(key);
+type FullType = string | number | boolean | null | undefined | symbol | object;
+
+type Includes = <T extends FullType[]>(arr: T, key: T[number]) => boolean | T;
+
+const includes: Includes = (arr, key) => {
+  if (!isArray(arr)) {
+    throw new Error('arr must be an array');
+  }
+  if (arr.length === 0) return arr;
+  for (const value of arr) {
+    if (value === key) return true;
+  }
+  return false;
+};
 
 export default includes;

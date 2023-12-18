@@ -6,20 +6,22 @@ import map from '../collect/map';
 type NotObj<T> = T extends object ? never : T;
 
 function deepClone<T>(obj: null | NotObj<T>): null | NotObj<T>;
-function deepClone<T>(obj: T): T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function deepClone<T extends any[]>(obj: T[]): T[];
 function deepClone<T extends object>(obj: T) {
   if (isNull(obj) || typeof obj !== 'object') {
     return obj;
   }
   if (isArray(obj)) {
-    return map((item) => deepClone(item), obj as unknown[]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return map((item: any) => deepClone(item), obj);
   }
   const result: {
     [key: string]: unknown;
   } = {};
   for (const key in obj) {
     if (has(obj, key)) {
-      result[key] = deepClone(obj[key]);
+      // result[key] = deepClone(obj[key]);
     }
   }
   return result;

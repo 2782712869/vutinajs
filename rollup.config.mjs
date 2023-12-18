@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-check
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -54,7 +55,9 @@ const config = [
     plugins: [
       nodeResolve(),
       commonjs({ include: 'node_modules/**' }),
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({ 
+        tsconfig: './tsconfig.json'
+      }),
       peerDepsExternal(),
     ],
 
