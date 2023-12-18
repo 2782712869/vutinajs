@@ -15,11 +15,6 @@ export { default as trim } from './string/trim';
 // math
 export { default as max } from './math/max';
 export { default as min } from './math/min';
-export { default as add } from './math/add';
-export { default as subtract } from './math/subtract';
-export { default as divide } from './math/divide';
-export { default as multiply } from './math/multiply';
-export { default as modulo } from './math/modulo';
 export { default as sum } from './math/sum';
 
 // collect

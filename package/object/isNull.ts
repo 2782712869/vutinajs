@@ -1,3 +1,3 @@
-const isNull = <T>(value: T) => value === null;
+const isNull = (value: unknown): value is null => value === null;
 
 export default isNull;

@@ -1,9 +1,13 @@
-import curry, { Curry } from '../fp/curry';
+import isString from './isString';
 
 type IndexOfStr = (source: string, target: string) => number;
 
-const indexOfStr: Curry<IndexOfStr> = curry((source, target) => {
+const indexOfStr: IndexOfStr = (source, target) => {
+  if (!isString(source) || !isString(target)) {
+    throw new Error('source must be a string');
+  }
+  if (source.length === 0) return -1;
   return source.indexOf(target);
-});
+};
 
 export default indexOfStr;
