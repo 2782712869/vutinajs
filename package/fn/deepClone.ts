@@ -1,30 +1,40 @@
 import isArray from '../array/isArray';
-import isNull from '../object/isNull';
 import has from '../object/has';
 import map from '../collect/map';
 
-type NotObj<T> = T extends object ? never : T;
+function deepClone<T>(obj: T, clonedMap = new WeakMap()): T {
+  if (obj === null || typeof obj !== 'object') {
+    return obj as T;
+  }
 
-function deepClone<T>(obj: null | NotObj<T>): null | NotObj<T>;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function deepClone<T extends any[]>(obj: T[]): T[];
-function deepClone<T extends object>(obj: T) {
-  if (isNull(obj) || typeof obj !== 'object') {
-    return obj;
+  if (clonedMap.has(obj)) {
+    return clonedMap.get(obj) as T;
   }
+
   if (isArray(obj)) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return map((item: any) => deepClone(item), obj);
+    const newArray = map((item) => deepClone(item, clonedMap), obj as T[]);
+    clonedMap.set(obj, newArray);
+    return newArray as T;
   }
-  const result: {
-    [key: string]: unknown;
-  } = {};
+
+  if (obj instanceof Date) {
+    return new Date(obj.getTime()) as T;
+  }
+
+  if (obj instanceof RegExp) {
+    return new RegExp(obj.source, obj.flags) as T;
+  }
+
+  const clonedObj = {} as T;
+  clonedMap.set(obj, clonedObj);
+
   for (const key in obj) {
     if (has(obj, key)) {
-      // result[key] = deepClone(obj[key]);
+      clonedObj[key] = deepClone(obj[key], clonedMap);
     }
   }
-  return result;
+
+  return clonedObj;
 }
 
 export default deepClone;
