@@ -1,7 +1,8 @@
 import concat from './concat';
 import isArray from './isArray';
+import { FullType } from 'utilis/types';
 
-type Union = <T>(arr: T[], ...args: T[][]) => T[];
+type Union = <T extends FullType>(arr: T[], ...args: T[][]) => T[];
 
 const union: Union = (arr, ...arrs) => {
   if (!isArray(arr)) {

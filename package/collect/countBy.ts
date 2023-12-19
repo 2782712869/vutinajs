@@ -4,14 +4,12 @@ import isUndefined from '../object/isUndefined';
 import isArray from '../array/isArray';
 import { FullType } from '../utilis/types';
 
-type CountBy = <T extends FullType[]>(
-  iteratee: (item: T[number]) => string | symbol,
-  list: T,
-) => Counts;
-
 type Counts = Record<string | symbol, number>;
 
-const countBy: CountBy = (iteratee, list) => {
+const countBy = <T extends FullType[]>(
+  iteratee: (item: T[number]) => string | symbol,
+  list: T,
+) => {
   if (!isArray(list)) {
     throw new Error('list must be an array');
   }

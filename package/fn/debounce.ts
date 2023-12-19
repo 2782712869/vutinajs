@@ -1,6 +1,10 @@
 import isFunction from './isFunction';
+import { FullType } from 'utilis/types';
 
-const debounce = <T, R>(fn: (...args: T[]) => R, delay: number) => {
+const debounce = <T extends FullType, R>(
+  fn: (...args: T[]) => R,
+  delay: number,
+) => {
   if (!isFunction(fn)) {
     throw new Error('fn must be a function');
   }

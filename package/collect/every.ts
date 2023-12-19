@@ -1,11 +1,9 @@
 import isArray from '../array/isArray';
 
-type Every = <T>(
+const every = <T>(
   predicate: (value: T, index: number) => boolean,
   list: T[],
-) => boolean;
-
-const every: Every = (predicate, list) => {
+) => {
   if (!isArray(list)) {
     throw new Error('list must be an array');
   }

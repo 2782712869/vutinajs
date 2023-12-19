@@ -1,11 +1,10 @@
 import isFunction from './isFunction';
+import { FullType } from 'utilis/types';
 
-type Delay = <T>(
+const delay = <T extends FullType>(
   fn: (...args: T[]) => void,
   time: number,
-) => (...rest: T[]) => void;
-
-const delay: Delay = (fn, time) => {
+): ((...rest: T[]) => void) => {
   if (!isFunction(fn)) {
     throw new Error('fn must be a function');
   }

@@ -2,7 +2,7 @@ import isArray from '../array/isArray';
 import has from '../object/has';
 import map from '../collect/map';
 
-function deepClone<T>(obj: T, clonedMap = new WeakMap()): T {
+const deepClone = <T>(obj: T, clonedMap = new WeakMap()): T => {
   if (obj === null || typeof obj !== 'object') {
     return obj as T;
   }
@@ -35,6 +35,6 @@ function deepClone<T>(obj: T, clonedMap = new WeakMap()): T {
   }
 
   return clonedObj;
-}
+};
 
 export default deepClone;

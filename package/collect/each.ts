@@ -1,8 +1,10 @@
 import isArray from '../array/isArray';
+import { FullType } from '../utilis/types';
 
-type Each = <T>(iteratee: (value: T, index: number) => void, list: T[]) => void;
-
-const each: Each = (iteratee, list) => {
+const each = <T extends FullType>(
+  iteratee: (value: T, index: number) => void,
+  list: T[],
+) => {
   if (!isArray(list)) {
     throw new Error('list must be an array');
   }

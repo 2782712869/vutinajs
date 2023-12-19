@@ -1,6 +1,7 @@
 import isArray from './isArray';
+import { FullType } from '../utilis/types';
 
-const join = <T>(arr: T[], separator: string) => {
+const join = <T extends FullType>(arr: T[], separator: string) => {
   if (!isArray(arr)) {
     throw new Error('arr must be an array');
   }

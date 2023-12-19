@@ -1,11 +1,9 @@
 import isArray from '../array/isArray';
 
-type Filter = <T, U extends T[]>(
+const filter = <T, U extends T[]>(
   predicate: (item: T, index: number) => boolean,
   list: U,
-) => T[];
-
-const filter: Filter = (predicate, list) => {
+) => {
   if (!isArray(list)) {
     throw new Error('list must be an array');
   }

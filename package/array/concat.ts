@@ -1,9 +1,8 @@
+import { FullType } from 'utilis/types';
 import each from '../collect/each';
 import isArray from './isArray';
 
-type Concat = <T>(arr: T[], ...arrs: T[][]) => T[];
-
-const concat: Concat = (arr, ...arrs) => {
+const concat = <T extends FullType>(arr: T[], ...arrs: T[][]): T[] => {
   if (!isArray(arr)) {
     throw new Error('arr must be an array');
   }
