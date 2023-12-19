@@ -1,5 +1,6 @@
 import reduce from '../collect/reduce';
 import isFunction from '../fn/isFunction';
+import identity from './identity';
 
 type PipeFunction<T> = (...args: T[]) => T;
 
@@ -13,7 +14,7 @@ const pipe = <T>(...args: PipeFunction<T>[]): PipeFunction<T> => {
         return f(g(...rest));
       };
     },
-    0,
+    identity,
     args,
   );
 };

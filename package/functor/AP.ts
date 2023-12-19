@@ -4,14 +4,14 @@ type Applicative<T> = {
   ap<U>(applicative: Applicative<(value: T) => U>): Applicative<U>;
 };
 
-const of = <T>(value: T): Applicative<T> => ({
+const Ap = <T>(value: T): Applicative<T> => ({
   value,
   map: function <U>(fn: (value: T) => U): Applicative<U> {
-    return of(fn(this.value));
+    return Ap(fn(this.value));
   },
   ap: function <U>(applicative: Applicative<(value: T) => U>): Applicative<U> {
-    return of(applicative.value(this.value));
+    return Ap(applicative.value(this.value));
   },
 });
 
-export default of;
+export default Ap;

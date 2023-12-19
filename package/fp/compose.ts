@@ -1,5 +1,6 @@
 import isFunction from '../fn/isFunction';
 import reduceRight from '../collect/reduceRight';
+import identity from './identity';
 
 type ComposeFunction<T> = (...args: T[]) => T;
 
@@ -13,7 +14,7 @@ const compose = <T>(...args: ComposeFunction<T>[]): ComposeFunction<T> => {
         return f(g(...rest));
       };
     },
-    0,
+    identity,
     args,
   );
 };

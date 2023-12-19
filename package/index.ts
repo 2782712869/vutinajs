@@ -66,5 +66,8 @@ export { default as partial } from './fp/partial';
 // functor
 export { default as IO } from './functor/IO';
 export { default as Task } from './functor/Task';
-export { default as of } from './functor/AP';
+export { default as Ap } from './functor/AP';
 export { default as Monad } from './functor/Monad';
+export { default as Maybe } from './functor/Maybe';
+export { default as Functor } from './functor/Functor';
+export { default as Either } from './functor/Either';
