@@ -5,13 +5,11 @@ import isArray from '../array/isArray';
 import { FullType } from '../utilis/types';
 
 type CountBy = <T extends FullType[]>(
-  iteratee: (item: T[number]) => string,
+  iteratee: (item: T[number]) => string | symbol,
   list: T,
 ) => Counts;
 
-type Counts = {
-  [key: string]: number;
-};
+type Counts = Record<string | symbol, number>;
 
 const countBy: CountBy = (iteratee, list) => {
   if (!isArray(list)) {

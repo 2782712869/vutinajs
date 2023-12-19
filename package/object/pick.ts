@@ -7,9 +7,7 @@ type _Pick = <T extends Obj, K extends keyof T>(
   props: K[] & string[],
 ) => Obj;
 
-type Obj = {
-  [key: string]: FullType;
-};
+type Obj = Record<string | symbol, FullType>;
 
 const pick: _Pick = (obj, props) => {
   if (!isObject(obj)) {
