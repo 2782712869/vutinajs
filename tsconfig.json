@@ -2,11 +2,10 @@
   "compilerOptions": {
     "baseUrl": "./package",
     "strict": true,
-    "target": "ESNext",
+    "target": "ES2015",
     "lib": ["ESNext"],
     "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "dist/types",
     "moduleResolution": "Node",
     "module": "ESNext",
     "isolatedModules": true,

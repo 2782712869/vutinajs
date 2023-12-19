@@ -2,14 +2,17 @@
   "name": "vutinajs",
   "version": "1.0.0",
   "description": "一个TS开发的FP函数工具库",
-  "main": "vutinajs.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.min.js",
   "scripts": {
     "eslint": "eslint --fix package --ext .ts --max-warnings=0",
     "prettier": "prettier --write \"package/**/*.ts\"",
     "commit": "cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "prepare": "husky install",
-    "build": "npm run eslint && npm run prettier && rollup --config --bundleConfigAsCjs",
+    "build": "npm run eslint && npm run prettier && rollup -c --bundleConfigAsCjs",
     "dev": "ts-node-dev --respawn --transpile-only ./package/index.ts"
   },
   "keywords": [

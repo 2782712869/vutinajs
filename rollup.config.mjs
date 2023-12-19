@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-var-requires */
 //@ts-check
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -6,15 +6,23 @@ import typescript from 'rollup-plugin-typescript2'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import terser from '@rollup/plugin-terser'
 
-import packageJson  from './package.json'
+const packageJson = require('./package.json')
 
 const umdName = packageJson.name
 
+const globals = {
+  ...packageJson.devDependencies,
+}
+
 const dir = 'dist'
 
+/**
+ * @type {import('rollup').RollupOptions[]}
+ */
 const config = [
   {
     input: 'package/index.ts',
+    external: [...Object.keys(globals)],
     output: [
       {
         file: dir + '/index.umd.js',
@@ -55,10 +63,12 @@ const config = [
     plugins: [
       nodeResolve(),
       commonjs({ include: 'node_modules/**' }),
-      typescript({ 
-        tsconfig: './tsconfig.json'
-      }),
-      peerDepsExternal(),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      typescript({ tsconfig: './tsconfig.json', declaration: false, check: true }),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      peerDepsExternal()
     ],
 
     treeshake: true,
