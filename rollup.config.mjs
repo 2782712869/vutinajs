@@ -1,20 +1,21 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-var-requires */
 //@ts-check
-import commonjs from '@rollup/plugin-commonjs'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import typescript from 'rollup-plugin-typescript2'
-import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import terser from '@rollup/plugin-terser'
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import terser from '@rollup/plugin-terser';
 
-const packageJson = require('./package.json')
+const packageJson = require('./package.json');
 
-const umdName = packageJson.name
+const umdName = '_';
 
 const globals = {
   ...packageJson.devDependencies,
-}
+};
 
-const dir = 'dist'
+const dir = 'dist';
 
 /**
  * @type {import('rollup').RollupOptions[]}
@@ -65,14 +66,19 @@ const config = [
       commonjs({ include: 'node_modules/**' }),
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      typescript({ tsconfig: './tsconfig.json', declaration: false, check: true }),
+      typescript({
+        tsconfig: './tsconfig.json',
+        // @ts-ignore
+        declaration: true,
+        check: true
+      }),
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      peerDepsExternal()
+      peerDepsExternal(),
     ],
 
     treeshake: true,
   },
-]
+];
 
-export default config
+export default config;

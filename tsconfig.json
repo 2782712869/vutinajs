@@ -6,7 +6,8 @@
     "lib": ["ESNext"],
     "outDir": "./dist",
     "declaration": true,
-    "moduleResolution": "Node",
+    "declarationDir": "./types",
+    "esModuleInterop": true,
     "module": "ESNext",
     "isolatedModules": true,
     "paths": {

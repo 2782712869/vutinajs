@@ -1,11 +1,14 @@
 {
   "name": "vutinajs",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "一个TS开发的FP函数工具库",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "types": "@types/index.d.ts",
   "unpkg": "dist/index.umd.min.js",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "eslint": "eslint --fix package --ext .ts --max-warnings=0",
     "prettier": "prettier --write \"package/**/*.ts\"",
