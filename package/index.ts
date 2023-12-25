@@ -34,6 +34,7 @@ export { default as join } from './array/join';
 export { default as take } from './array/take';
 export { default as union } from './array/union';
 export { default as includes } from './array/includes';
+export { default as flatten } from './array/flatten';
 
 // object
 export { default as isNull } from './object/isNull';
