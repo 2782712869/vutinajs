@@ -47,6 +47,8 @@ export { default as values } from './object/values';
 export { default as has } from './object/has';
 export { default as pick } from './object/pick';
 export { default as omit } from './object/omit';
+export { default as assign } from './object/assign';
+export { default as merge } from './object/merge';
 
 // fn
 export { default as isFunction } from './fn/isFunction';
