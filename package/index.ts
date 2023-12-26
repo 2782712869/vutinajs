@@ -55,6 +55,7 @@ export { default as once } from './fn/once';
 export { default as deepClone } from './fn/deepClone';
 export { default as debounce } from './fn/debounce';
 export { default as throttle } from './fn/throttle';
+export { default as aspect } from './fn/aspect';
 
 // fp
 export { default as identity } from './fp/identity';

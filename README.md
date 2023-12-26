@@ -3,7 +3,7 @@
 ## 使用方法
 
 ```typescript
-import { map, each, filter, pipe, curry } from 'vutinajs';
+import { map, each, filter, pipe, curry, Functor, Maybe } from 'vutinajs';
 const double = curry(map)((x) => x * 2);
 const even = curry(filter)((x) => x % 2 === 0);
 const log = curry(each)((x) => console.log(x));
