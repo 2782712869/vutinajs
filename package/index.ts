@@ -25,6 +25,7 @@ export { default as filter } from './collect/filter';
 export { default as map } from './collect/map';
 export { default as reduce } from './collect/reduce';
 export { default as pluck } from './collect/pluck';
+export { default as some } from './collect/some';
 
 // array
 export { default as chunk } from './array/chunk';
