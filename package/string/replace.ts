@@ -6,7 +6,7 @@ type Replace = <T extends string, K extends string | RegExp>(
 ) => string;
 
 const replace: Replace = (source, target) => {
-  if (!isString(source) || !isString(target)) {
+  if (!isString(source)) {
     throw new Error('source must be a string');
   }
   if (source.length === 0) return '';
