@@ -18,7 +18,7 @@ const some = <
   if (list.length === 0) {
     return false;
   }
-  for (let i = 0; i < iteratee.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     if (iteratee(list[i], i)) {
       return true;
     }
