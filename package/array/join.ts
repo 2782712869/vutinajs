@@ -1,5 +1,6 @@
 import isArray from './isArray';
 import { FullType } from '../utilis/types';
+import curry from '../fp/curry';
 
 const join = <T extends FullType>(arr: T[], separator: string) => {
   if (!isArray(arr)) {
@@ -9,4 +10,4 @@ const join = <T extends FullType>(arr: T[], separator: string) => {
   return arr.join(separator);
 };
 
-export default join;
+export default curry(join);

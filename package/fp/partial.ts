@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import isFunction from '../fn/isFunction';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

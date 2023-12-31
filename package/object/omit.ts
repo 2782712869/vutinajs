@@ -3,6 +3,7 @@ import includes from '../array/includes';
 import keys from './keys';
 import isObject from './isObject';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 type _Omit = <T extends Obj>(obj: T, props: string[]) => Obj;
 
@@ -16,13 +17,13 @@ const omit: _Omit = (obj, props) => {
   }
   const result: Obj = {};
 
-  each((key: string) => {
+  each((key) => {
     if (!includes(props, key)) {
-      result[key] = obj[key];
+      result[key as string] = obj[key as string];
     }
   }, keys(obj));
 
   return result;
 };
 
-export default omit;
+export default curry(omit);

@@ -1,4 +1,5 @@
 import isString from './isString';
+import curry from '../fp/curry';
 
 type SliceStr = (source: string, start: number, end?: number) => string;
 
@@ -10,4 +11,4 @@ const sliceStr: SliceStr = (source, start, end = source.length) => {
   return source.slice(start, end);
 };
 
-export default sliceStr;
+export default curry(sliceStr);

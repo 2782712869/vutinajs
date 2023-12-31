@@ -1,6 +1,7 @@
 import each from '../collect/each';
 import isObject from './isObject';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 type _Pick = <T extends Obj, K extends keyof T>(
   obj: T,
@@ -14,10 +15,10 @@ const pick: _Pick = (obj, props) => {
     throw new TypeError('Expected an object');
   }
   const result: Obj = {};
-  each((key: string) => {
-    result[key] = obj[key];
+  each((key) => {
+    result[key as string] = obj[key as string];
   }, props);
   return result;
 };
 
-export default pick;
+export default curry(pick);

@@ -1,6 +1,7 @@
 import isFunction from '../fn/isFunction';
 import isArray from '../array/isArray';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 const some = <
   T extends (value: U[number], index: number) => boolean,
@@ -26,4 +27,4 @@ const some = <
   return false;
 };
 
-export default some;
+export default curry(some);

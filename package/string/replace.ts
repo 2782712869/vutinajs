@@ -1,4 +1,5 @@
 import isString from './isString';
+import curry from '../fp/curry';
 
 type Replace = <T extends string, K extends string | RegExp>(
   source: T,
@@ -13,4 +14,4 @@ const replace: Replace = (source, target) => {
   return source.replace(...target);
 };
 
-export default replace;
+export default curry(replace);

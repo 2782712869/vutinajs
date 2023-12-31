@@ -1,5 +1,6 @@
 import isFunction from './isFunction';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 const throttle = <T extends FullType, R>(
   fn: (...args: T[]) => R,
@@ -18,4 +19,4 @@ const throttle = <T extends FullType, R>(
   };
 };
 
-export default throttle;
+export default curry(throttle);

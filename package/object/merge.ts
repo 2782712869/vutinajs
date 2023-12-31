@@ -2,6 +2,7 @@ import { FullType } from 'utilis/types';
 import isObject from './isObject';
 import each from '../collect/each';
 import some from '../collect/some';
+import curry from '../fp/curry';
 
 type AnyObject = Record<string, FullType>;
 
@@ -18,11 +19,18 @@ const merge = <T extends AnyObject, U extends AnyObject[]>(
   const result: AnyObject = {};
 
   each((obj) => {
-    for (const key in obj) {
-      if (isObject(obj[key]) && key in result && isObject(result[key])) {
-        result[key] = merge(result[key] as AnyObject, obj[key] as AnyObject);
+    for (const key in obj as object) {
+      if (
+        isObject(obj![key as keyof object]) &&
+        key in result &&
+        isObject(result[key])
+      ) {
+        result[key] = merge(
+          result[key] as AnyObject,
+          obj![key as keyof object] as AnyObject,
+        );
       } else {
-        result[key] = obj[key];
+        result[key] = obj![key as keyof object];
       }
     }
   }, objects);
@@ -30,4 +38,4 @@ const merge = <T extends AnyObject, U extends AnyObject[]>(
   return result as T & U[number];
 };
 
-export default merge;
+export default curry(merge);

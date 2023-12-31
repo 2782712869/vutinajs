@@ -16,7 +16,7 @@ const compose = <T>(...args: ComposeFunction<T>[]): ComposeFunction<T> => {
     },
     identity,
     args,
-  );
+  ) as ComposeFunction<T>;
 };
 
 export default compose;

@@ -1,4 +1,5 @@
 import isString from './isString';
+import curry from '../fp/curry';
 
 type Split = (
   source: string,
@@ -14,4 +15,4 @@ const split: Split = (source, separator, limit) => {
   return source.split(separator, limit);
 };
 
-export default split;
+export default curry(split);

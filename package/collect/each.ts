@@ -1,8 +1,9 @@
 import isArray from '../array/isArray';
 import { FullType } from '../utilis/types';
+import curry from '../fp/curry';
 
 const each = <T extends FullType>(
-  iteratee: (value: T, index: number) => void,
+  iteratee: (value: (typeof list)[number], index: number) => void,
   list: T[],
 ) => {
   if (!isArray(list)) {
@@ -16,4 +17,4 @@ const each = <T extends FullType>(
   }
 };
 
-export default each;
+export default curry(each);

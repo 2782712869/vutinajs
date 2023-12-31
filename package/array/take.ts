@@ -1,5 +1,6 @@
 import isArray from './isArray';
 import { FullType } from '../utilis/types';
+import curry from '../fp/curry';
 
 const take = <T extends FullType>(arr: T[], count: number) => {
   if (!isArray(arr)) {
@@ -9,4 +10,4 @@ const take = <T extends FullType>(arr: T[], count: number) => {
   return arr.slice(0, count);
 };
 
-export default take;
+export default curry(take);

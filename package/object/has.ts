@@ -1,4 +1,5 @@
 import isObject from './isObject';
+import curry from '../fp/curry';
 
 const has = <T extends object>(obj: T, propertyName: string) => {
   if (!isObject(obj)) {
@@ -7,4 +8,4 @@ const has = <T extends object>(obj: T, propertyName: string) => {
   return Object.hasOwn(obj, propertyName);
 };
 
-export default has;
+export default curry(has);

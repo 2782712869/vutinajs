@@ -1,5 +1,6 @@
 import isFunction from './isFunction';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 const debounce = <T extends FullType, R>(
   fn: (...args: T[]) => R,
@@ -17,4 +18,4 @@ const debounce = <T extends FullType, R>(
   };
 };
 
-export default debounce;
+export default curry(debounce);

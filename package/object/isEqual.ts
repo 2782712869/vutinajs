@@ -1,5 +1,6 @@
 import includes from '../array/includes';
 import keys from './keys';
+import curry from '../fp/curry';
 
 const isEqual = <T>(obj1: T, obj2: T): boolean => {
   if (obj1 === obj2) {
@@ -31,4 +32,4 @@ const isEqual = <T>(obj1: T, obj2: T): boolean => {
   return true;
 };
 
-export default isEqual;
+export default curry(isEqual);

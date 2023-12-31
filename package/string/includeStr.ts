@@ -1,4 +1,5 @@
 import isString from './isString';
+import curry from '../fp/curry';
 
 type IncludeStr = (source: string, target: string) => boolean;
 
@@ -10,4 +11,4 @@ const includeStr: IncludeStr = (source, target) => {
   return source.includes(target);
 };
 
-export default includeStr;
+export default curry(includeStr);

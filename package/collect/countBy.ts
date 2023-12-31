@@ -3,6 +3,7 @@ import isNull from '../object/isNull';
 import isUndefined from '../object/isUndefined';
 import isArray from '../array/isArray';
 import { FullType } from '../utilis/types';
+import curry from '../fp/curry';
 
 type Counts = Record<string | symbol, number>;
 
@@ -29,4 +30,4 @@ const countBy = <T extends FullType[]>(
   );
 };
 
-export default countBy;
+export default curry(countBy);

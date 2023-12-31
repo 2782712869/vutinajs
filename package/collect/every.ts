@@ -1,4 +1,5 @@
 import isArray from '../array/isArray';
+import curry from '../fp/curry';
 
 const every = <T>(
   predicate: (value: T, index: number) => boolean,
@@ -18,4 +19,4 @@ const every = <T>(
   return true;
 };
 
-export default every;
+export default curry(every);

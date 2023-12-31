@@ -1,6 +1,7 @@
 import map from './map';
 import isArray from '../array/isArray';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 const pluck = <T extends Record<string, FullType>>(
   list: T[],
@@ -12,7 +13,7 @@ const pluck = <T extends Record<string, FullType>>(
   if (list.length === 0) {
     return [];
   }
-  return map((item: (typeof list)[number]) => item[propertyName], list);
+  return map((item) => (item as T)[propertyName], list) as T[keyof T][];
 };
 
-export default pluck;
+export default curry(pluck);

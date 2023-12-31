@@ -1,6 +1,7 @@
 import { FullType } from 'utilis/types';
 import has from './has';
 import isObject from './isObject';
+import curry from '../fp/curry';
 
 type AnyObject = Record<string, FullType>;
 
@@ -22,4 +23,4 @@ const assign = <T extends AnyObject, U extends AnyObject[]>(
   return target as T & U[number];
 };
 
-export default assign;
+export default curry(assign);

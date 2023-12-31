@@ -1,5 +1,6 @@
 import isArray from './isArray';
 import { FullType } from '../utilis/types';
+import curry from '../fp/curry';
 
 const chunk = <T extends FullType>(list: T[], size: number): T[][] => {
   if (!isArray(list)) {
@@ -15,4 +16,4 @@ const chunk = <T extends FullType>(list: T[], size: number): T[][] => {
   return result;
 };
 
-export default chunk;
+export default curry(chunk);

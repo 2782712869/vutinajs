@@ -1,5 +1,6 @@
 import { FullType } from '../utilis/types';
 import isFunction from './isFunction';
+import curry from '../fp/curry';
 
 type FuncType = (...args: FullType[]) => unknown;
 
@@ -31,4 +32,4 @@ const aspect = (
   };
 };
 
-export default aspect;
+export default curry(aspect);

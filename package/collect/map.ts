@@ -1,4 +1,5 @@
 import isArray from '../array/isArray';
+import curry from '../fp/curry';
 
 const map = <T, U>(mapper: (item: T, index: number) => U, arr: T[]): U[] => {
   if (!isArray(arr)) {
@@ -17,4 +18,4 @@ const map = <T, U>(mapper: (item: T, index: number) => U, arr: T[]): U[] => {
   return result;
 };
 
-export default map;
+export default curry(map);

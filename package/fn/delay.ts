@@ -1,5 +1,6 @@
 import isFunction from './isFunction';
 import { FullType } from 'utilis/types';
+import curry from '../fp/curry';
 
 const delay = <T extends FullType>(
   fn: (...args: T[]) => void,
@@ -13,4 +14,4 @@ const delay = <T extends FullType>(
   };
 };
 
-export default delay;
+export default curry(delay);

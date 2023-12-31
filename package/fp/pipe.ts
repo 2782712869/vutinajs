@@ -16,7 +16,7 @@ const pipe = <T>(...args: PipeFunction<T>[]): PipeFunction<T> => {
     },
     identity,
     args,
-  );
+  ) as PipeFunction<T>;
 };
 
 export default pipe;

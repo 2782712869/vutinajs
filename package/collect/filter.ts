@@ -1,4 +1,5 @@
 import isArray from '../array/isArray';
+import curry from '../fp/curry';
 
 const filter = <T, U extends T[]>(
   predicate: (item: T, index: number) => boolean,
@@ -20,4 +21,4 @@ const filter = <T, U extends T[]>(
   return result;
 };
 
-export default filter;
+export default curry(filter);
