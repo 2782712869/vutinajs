@@ -1,4 +1,4 @@
-import isFunction from 'fn/isFunction';
+import isFunction from '../fn/isFunction';
 
 type Curry<A, R, D extends unknown[] = []> = A extends [infer H, ...infer T]
   ? T extends []
