@@ -6,7 +6,7 @@ const chunk = <T extends FullType>(list: T[], size: number): T[][] => {
     throw new Error('list must be an array');
   }
   if (!Number.isInteger(size) || size <= 0)
-    throw new Error('size必须是大于0的整数');
+    throw new Error('size must be a positive integer');
   if (chunk.length === 0) return [];
   const result: T[][] = [];
   for (let i = 0; i < list.length; i += size) {
