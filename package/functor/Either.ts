@@ -5,7 +5,8 @@ const Either = {
   }),
   Left: <T>(value: T) => ({
     value,
-    map: () => Either.Left(value),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    map: <R>(fn: (value: T) => R) => Either.Left(value),
   }),
 };
 
