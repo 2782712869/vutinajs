@@ -1,14 +1,18 @@
 import { FullType } from 'utilis/types';
 import isObject from './isObject';
 import each from '../collect/each';
+import some from '../collect/some';
 
 type AnyObject = Record<string, FullType>;
 
 const merge = <T extends AnyObject, U extends AnyObject[]>(
   ...objects: [T, ...U]
 ): T & U[number] => {
-  if (objects.some((obj) => !isObject(obj))) {
+  if (some((obj) => !isObject(obj), objects)) {
     throw new TypeError('Expected all arguments to be objects');
+  }
+  if (objects.length === 1) {
+    return objects[0];
   }
 
   const result: AnyObject = {};

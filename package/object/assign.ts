@@ -14,9 +14,7 @@ const assign = <T extends AnyObject, U extends AnyObject[]>(
   sources.forEach((source) => {
     for (const key in source) {
       if (has(source, key)) {
-        if (key in target) {
-          target[key as keyof T] = source[key] as T[keyof T];
-        }
+        target[key as keyof T] = source[key] as T[keyof T];
       }
     }
   });
