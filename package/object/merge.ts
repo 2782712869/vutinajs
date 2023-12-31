@@ -2,7 +2,6 @@ import { FullType } from 'utilis/types';
 import isObject from './isObject';
 import each from '../collect/each';
 import some from '../collect/some';
-import curry from '../fp/curry';
 
 type AnyObject = Record<string, FullType>;
 
@@ -38,4 +37,4 @@ const merge = <T extends AnyObject, U extends AnyObject[]>(
   return result as T & U[number];
 };
 
-export default curry(merge);
+export default merge;

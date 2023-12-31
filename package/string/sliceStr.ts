@@ -1,14 +1,14 @@
 import isString from './isString';
 import curry from '../fp/curry';
 
-type SliceStr = (source: string, start: number, end?: number) => string;
+const sliceStr = curry(
+  (source: string, start: number, end: number = source.length) => {
+    if (!isString(source)) {
+      throw new Error('source must be a string');
+    }
+    if (source.length === 0) return '';
+    return source.slice(start, end);
+  },
+);
 
-const sliceStr: SliceStr = (source, start, end = source.length) => {
-  if (!isString(source)) {
-    throw new Error('source must be a string');
-  }
-  if (source.length === 0) return '';
-  return source.slice(start, end);
-};
-
-export default curry(sliceStr);
+export default sliceStr;

@@ -2,7 +2,7 @@ import includes from '../array/includes';
 import keys from './keys';
 import curry from '../fp/curry';
 
-const isEqual = <T>(obj1: T, obj2: T): boolean => {
+const isEqual = curry(<T>(obj1: T, obj2: T): boolean => {
   if (obj1 === obj2) {
     return true;
   }
@@ -30,6 +30,6 @@ const isEqual = <T>(obj1: T, obj2: T): boolean => {
   }
 
   return true;
-};
+});
 
-export default curry(isEqual);
+export default isEqual;
