@@ -1,8 +1,7 @@
 import isArray from './isArray';
 import { FullType } from '../utilis/types';
-import curry from '../fp/curry';
 
-const includes = curry(<T extends FullType[]>(arr: T, key: FullType) => {
+const includes = <T extends FullType[]>(arr: T, key: FullType) => {
   if (!isArray(arr)) {
     throw new Error('arr must be an array');
   }
@@ -11,6 +10,6 @@ const includes = curry(<T extends FullType[]>(arr: T, key: FullType) => {
     if (value === key) return true;
   }
   return false;
-});
+};
 
 export default includes;

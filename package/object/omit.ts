@@ -3,13 +3,12 @@ import includes from '../array/includes';
 import keys from './keys';
 import isObject from './isObject';
 import { FullType } from 'utilis/types';
-import curry from '../fp/curry';
 
 type Obj = {
   [key: string]: FullType;
 };
 
-const omit = curry(<T extends Obj>(obj: T, props: string[]) => {
+const omit = <T extends Obj>(obj: T, props: string[]) => {
   if (!isObject(obj)) {
     throw new TypeError('Expected an object');
   }
@@ -22,6 +21,6 @@ const omit = curry(<T extends Obj>(obj: T, props: string[]) => {
   }, keys(obj));
 
   return result;
-});
+};
 
 export default omit;

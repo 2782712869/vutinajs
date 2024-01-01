@@ -1,8 +1,7 @@
 import isArray from './isArray';
 import { FullType } from '../utilis/types';
-import curry from '../fp/curry';
 
-const chunk = curry(<T extends FullType>(list: T[], size: number): T[][] => {
+const chunk = <T extends FullType>(list: T[], size: number): T[][] => {
   if (!isArray(list)) {
     throw new Error('list must be an array');
   }
@@ -14,6 +13,6 @@ const chunk = curry(<T extends FullType>(list: T[], size: number): T[][] => {
     result.push(list.slice(i, i + size));
   }
   return result;
-});
+};
 
 export default chunk;
